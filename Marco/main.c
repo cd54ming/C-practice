@@ -12,7 +12,7 @@ const double EULERS_NUMBER = 2.71828;
 
 // inline 更適合簡單函數，減少潛在錯誤，可以取代 define
 // inline function 可減少函數的調用開銷（如壓棧和跳轉），但編譯器還是會根據優化策略決定選擇是否採用
-// inline function 只適合簡單的函式，過於複雜的函式會導致程式碼膨脹 (code bloat)
+// inline function 適合體積較小的函數，以避免內聯導致程式碼膨脹 (code bloat)
 static inline double calculate_exponential(double exponent) {
     // 泰勒展開式
     double result = 1.0;
