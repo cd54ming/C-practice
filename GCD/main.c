@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+// 10958 mod 1992 = 998
+// 1992 mod 998 = 994
+// 998 mod 994 = 4
+// 994 mod 4 = 2
+// 4 mod 2 = 0
+// -> 10958 and 1992's GCD is 2
+
 unsigned int gcd(unsigned int m, unsigned int n) {
     unsigned int result;
     while (n > 0) {
