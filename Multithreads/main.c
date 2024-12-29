@@ -15,6 +15,7 @@ int main(void) {
 
     for (short i = 0; i < NUM_THREADS; i++) {
         thread_args[i] = i;
+        // void * 是一種特殊的指標型別，用來存儲地址，但不能直接解釋該地址處的數據
         pthread_create(&threads[i], NULL, addOne, (void *)&thread_args[i]);
     }
 
