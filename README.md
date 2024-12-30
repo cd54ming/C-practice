@@ -1,5 +1,5 @@
 # C-practice
-## Learning C Practice
+## Learning C Practice   
 
 This repository contains my practice exercises for learning the C programming language. The goal is to improve my understanding and proficiency in C by working on various coding challenges and projects.
 
@@ -43,7 +43,7 @@ Static Function 無法被其他檔案存取，其他檔案中可以宣告同樣�
 ### Type Size
 查看 64-bit 系統中各個型別大小，了解不同型別的記憶體佔用。
 
-### Call by Reference
+### Call by Address
 習慣 C 語言中的引用調用方式，與 JavaScript 設計哲學不同，JavaScript 偏向不可變性，透過副本操作提升程式的可讀性和安全性。
 C 語言為了追求高效和低資源使用，常常直接使用參數值。
 
