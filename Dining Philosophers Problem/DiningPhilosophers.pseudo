@@ -1,0 +1,43 @@
+Monitor DiningPhilosophers {
+	enum State {THINKING, HUNGRY, EATING};
+	State state[N];
+	Condition self[N];
+
+	Initialization() {
+		for (int i = 0; i < N; i++) {
+			state[i] = THINKING;
+		}
+	}
+
+	void pickup(int i) {
+		state[i] = HUNGRY;
+		Test(i);
+		if (state[i] != EATING) {
+			self[i].wait();
+		}
+	}
+
+	void putdown(int i) {
+		state[i] = THINKING;
+		Test(Left(i));
+		Test(Right(i));
+	}
+
+	void Test(int i) {
+		if (state[i] == HUNGRY &&
+			state[Left(i)] == THINKING &&
+			state[Right(i)] == THINKING
+		) {
+			state[i] = EATING;
+			self[i].signal();
+		}
+	}
+
+	int Left(int i) {
+		return (i + N - 1) % N;
+	}
+
+	int Right(int i) {
+		return (i + 1) % N;
+	}
+}

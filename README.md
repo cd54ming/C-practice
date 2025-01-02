@@ -5,6 +5,9 @@ This repository contains my practice exercises for learning the C programming la
 
 ## Categories
 
+### Dining Philosophers Problem (Pseudocode)
+學習並理解 Synchronization 經典問題中的 Dining Philosophers Problem 限制同時拿筷子的人數的解法。
+
 ### First Reader-Writer Problem (Pseudocode)
 學習並理解 Synchronization 經典問題中的 Reader-Writer Problem（Reader Priority）解法。
 
