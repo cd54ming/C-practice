@@ -40,7 +40,7 @@ void decrease_counter(counter_t *counter) {
 }
 
 void destroy_counter(counter_t *counter, const char *sem_name) {
-    // ! sem_destroy deprecated in macOS
+    // ! sem_destroy() is deprecated in macOS
     // sem_destroy(&counter->sem);
 
     sem_close(counter->sem); // 關閉信號量
