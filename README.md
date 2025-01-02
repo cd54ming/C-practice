@@ -5,6 +5,9 @@ This repository contains my practice exercises for learning the C programming la
 
 ## Categories
 
+### First Reader-Writer Problem (Pseudocode)
+學習並理解 Synchronization 經典問題中的 Reader-Writer Problem（Reader Priority）解法。
+
 ### Fibonacci Search
 實作費氏搜尋演算法，利用 Fibonacci 數列縮小搜尋範圍。
 費氏搜尋演算法理論上適用於效優化資料存取次數，因為資料普遍具有 Locality of Reference 特性。

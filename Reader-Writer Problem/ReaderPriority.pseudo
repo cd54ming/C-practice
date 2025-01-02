@@ -1,0 +1,29 @@
+semaphore write_mutex = 1;
+semaphore mutex = 1;
+int read_count = 0;
+
+Reader () {
+	wait(mutex);
+	read_count++;
+	if (read_count == 1) {
+		wait(write_mutex);
+	}
+	signal(mutex);
+	
+	ReadResource();
+	
+	wait(mutex);
+	read_count--;
+	if (read_count == 0) {
+		signal(write_mutex);
+	}
+	signal(mutex);
+}
+
+Writer () {
+	wait(write_mutex);
+
+	WriteResource();
+
+	signal(write_mutex);
+}
