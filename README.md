@@ -5,6 +5,16 @@ This repository contains my practice exercises for learning the C programming la
 
 ## Categories
 
+### Producer-Consumer Problem using Semaphores
+練習使用 Semaphore 解決 Producer-Consumer 問題，並複習 Static Variable、Struct 與 Pointer 的使用。
+Semaphore 的計數機制可以控制多執行緒或多程序操作有限資源。當資源數量變動時，Semaphore 對計數進行加減來同步執行緒。
+
+### Producer-Consumer Problem using Condition Variables
+練習使用 Condition Variables 解決 Producer-Consumer 問題。
+- `pthread_cond_signal()` 喚醒等待中的執行緒，但該執行緒不一定會立刻獲取鎖，而是與其他執行緒公平競爭。
+- 上述帶來的結果可能是同時有多個執行緒卡在 wait，需使用 `pthread_cond_broadcast()` 喚醒所有等待中的執行緒，避免程式無法結束的情況。
+- Mutex 搭配 Condition Variable 再結合一個 Counter 可以模擬出類似 Semaphore 的效果。
+
 ### Dining Philosophers Problem (Pseudocode)
 學習並理解 Synchronization 經典問題中的 Dining Philosophers Problem 限制同時拿筷子的人數的解法。
 
@@ -13,13 +23,15 @@ This repository contains my practice exercises for learning the C programming la
 
 ### Fibonacci Search
 實作費氏搜尋演算法，利用 Fibonacci 數列縮小搜尋範圍。
-費氏搜尋演算法理論上適用於效優化資料存取次數，因為資料普遍具有 Locality of Reference 特性。
+費氏搜尋演算法理論上適用於優化資料存取次數，因為資料普遍具有 Locality of Reference 特性。
 
 ### Atomic Operations
 練習使用 Atomic Operations：`__sync_fetch_and_add()`、`__sync_fetch_and_sub()` 實現同步機制，避免 Race Condition。
 
 ### Semaphore
 練習使用 Semaphore 來保護共享資源，避免 Race Condition。
+- Semaphore 是計數機制，用來控制多執值緒或多程序操作有限數量的資源。
+- Binary Semaphore 可模擬 Mutex & Condition Variables，但最大的不同是觸發條件可以由其他執行緒控制。
 
 ### Mutex
 練習使用 Mutex 來保護共享資源，避免 Race Condition。
