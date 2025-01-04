@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "*.embeddedhtml": "html",
-        "assert.h": "c"
+        "assert.h": "c",
+        "pthread.h": "c",
+        "semaphore.h": "c",
+        "mutex": "c",
+        "dispatch.h": "c"
     }
 }
