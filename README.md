@@ -4,10 +4,9 @@
 This repository contains my practice exercises for learning the C programming language. The goal is to improve my understanding and proficiency in C by working on various coding challenges and projects.
 
 ## Categories
-
 ### Producer-Consumer Problem using Semaphores
 練習使用 Semaphore 解決 Producer-Consumer 問題，並複習 Static Variable、Struct 與 Pointer 的使用。
-Semaphore 的計數機制可以控制多執行緒或多程序操作有限資源。當資源數量變動時，Semaphore 對計數進行加減來同步執行緒。
+- Semaphore 的計數機制可以控制多執行緒或多程序操作有限資源。當資源數量變動時，Semaphore 對計數進行加減來同步執行緒。
 
 ### Producer-Consumer Problem using Condition Variables
 練習使用 Condition Variables 解決 Producer-Consumer 問題。
@@ -84,8 +83,11 @@ Semaphore 的計數機制可以控制多執行緒或多程序操作有限資源�
 ### ENUM
 熟悉 ENUM 的使用方式，並學習結合 bit operation 進行應用。
 
-#### Binary Search Tree
+### Binary Search Tree
 實現 BST，包括 Insert, Delete, Search, Traversal 等操作。
+- 部分方法撰寫 Loop 與 Recursive 兩個版本，熟悉不同實作技巧。
+- 練習使用動態記憶體管理（`malloc()`/`free()`）處理樹節點。
+- 撰寫測試，驗證程式正確性與穩定性。
 
-#### Count Node Children
+### Count Node Children
 利用堆疊資料結構（Stack）計算以字串形式表示的二元樹（e.g. `"C(G, H(L, M(N)), I), D(J)))", 'C'`）的子節點數量，並練習 `assert()` 的使用。
