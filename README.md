@@ -50,7 +50,7 @@ This repository contains my practice exercises for learning the C programming la
 - Static Function 僅限於當前檔案使用，無法被其他檔案存取，可用於避免命名衝突。
 
 ### Intersection of Two Arrays
-使用 realloc 動態調整記憶體大小，實作兩個陣列的交集運算。
+使用 `realloc()` 動態調整記憶體大小，實作兩個陣列的交集運算。
 
 ### Argc and Argv
 練習 `main()` 函數參數 `argc` 和 `argv` 的使用方式，了解如何處理命令列參數。
