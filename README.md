@@ -4,6 +4,13 @@
 This repository contains my practice exercises for learning the C programming language. The goal is to improve my understanding and proficiency in C by working on various coding challenges and projects.
 
 ## Categories
+
+### Object-Oriented Paradigm
+使用函式指標和結構實作物件導向的核心概念，包括 **封裝**、**繼承** 和 **多型**。
+
+並複習函式指標的使用方式，及加深對指標轉型的理解：
+- **指標型別的轉換**：指標型別的轉換只是重新解讀記憶體佈局的一種方式，記憶體的配置大小與範圍並不會改變。
+
 ### Producer-Consumer Problem using Semaphores
 練習使用 Semaphore 解決 Producer-Consumer 問題，並複習 Static Variable、Struct 與 Pointer 的使用。
 - Semaphore 的計數機制可以控制多執行緒或多程序操作有限資源。當資源數量變動時，Semaphore 對計數進行加減來同步執行緒。
