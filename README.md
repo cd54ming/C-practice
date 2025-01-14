@@ -84,6 +84,9 @@ This repository contains my practice exercises for learning the C programming la
 ### Calculate Binary
 練習將十進制數字轉換為二進制表示。
 
+### Triangle And Diamond
+練習使用迴圈來生成圖案，包括正、反三角形與菱形。
+
 ### Marco
 理解 `#define` 的用法，以及 Inline Function 的應用場景。
 
