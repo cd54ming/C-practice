@@ -5,6 +5,10 @@
         "pthread.h": "c",
         "semaphore.h": "c",
         "mutex": "c",
-        "dispatch.h": "c"
+        "dispatch.h": "c",
+        "__locale": "c",
+        "string": "c",
+        "string_view": "c",
+        "test_sorting.h": "c"
     }
 }

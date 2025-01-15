@@ -5,6 +5,10 @@ This repository contains my practice exercises for learning the C programming la
 
 ## Categories
 
+### Sorting
+實作常見的六大排序演算法（Bubble Sort、Selection Sort、Insertion Sort、Quick Sort、Heap Sort 與 Merge Sort），並進行單元測試。
+- 函式指標應用：透過函式指標實現排序順序（Ascending 或 Descending）的靈活調整。
+
 ### Object-Oriented Paradigm
 使用函式指標和結構實作物件導向的核心概念，包括 **封裝**、**繼承** 和 **多型**。
 
@@ -29,7 +33,7 @@ This repository contains my practice exercises for learning the C programming la
 
 ### Fibonacci Search
 實作費氏搜尋演算法，利用 Fibonacci 數列縮小搜尋範圍。
-費氏搜尋演算法理論上適用於優化資料存取次數，因為資料普遍具有 Locality of Reference 特性。
+- 費氏搜尋演算法理論上適用於優化資料存取次數，因為資料普遍具有 Locality of Reference 特性。
 
 ### Atomic Operations
 練習使用 Atomic Operations：`__sync_fetch_and_add()`、`__sync_fetch_and_sub()` 實現同步機制，避免 Race Condition。
