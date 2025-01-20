@@ -1,5 +1,5 @@
 # C-practice
-## Learning C Practice   
+## Learning C Practice
 
 This repository contains my practice exercises for learning the C programming language. The goal is to improve my understanding and proficiency in C by working on various coding challenges and projects.
 
