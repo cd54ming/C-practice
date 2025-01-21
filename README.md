@@ -74,6 +74,7 @@ This repository contains my practice exercises for learning the C programming la
 
 ### Type Size
 查看 64-bit 系統中不同型別的記憶體占用大小。
+- char 是唯一被標準直接定義大小的型別，固定為 1 byte，其他型別大小為實作定義。
 
 ### Call by Address
 熟悉 C 語言中的 Call by Address。

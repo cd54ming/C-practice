@@ -1,58 +1,37 @@
-#include <stdio.h>
-#include <stdbool.h>
 #include <assert.h>
+#include <stdbool.h>
+#include <stdio.h>
 
-// 基本原則：char 1 byte, short 2 bytes, 標準 int 4 bytes, long 4 or 8 bytes, float 4 bytes, double 8 bytes, long long 8 bytes, bool 1 byte
+// Reference: https://youtu.be/gRt_l2H8wBA?si=UrI3r3-eav9z8IrI
+
+// 型別決定了資料的「儲存方式」與「運算行為」
+// char 是唯一被標準直接定義大小的型別，固定為 1 byte
+// 其他型別大小是 implementation-defined（實作定義），會依據編譯器而有所不同
+// 一般遵循以下關係：
+// short (2 bytes) <= int (4 bytes) <= long (4 或 8 bytes) <= long long (8 bytes)
 
 int main(void) {
-    char char_type = 'a';
-    int int_type = 1;
-    short int short_type = 1;
-    long int long_type = 1;
-    long long int long_long_type = 1;
+    printf("Size of bool: %zu bytes\n", sizeof(bool)); // after C99
+    printf("Size of char: %zu bytes\n", sizeof(char));
+    printf("Size of short int: %zu bytes\n", sizeof(short int));
+    printf("Size of int: %zu bytes\n", sizeof(int));
+    printf("Size of long int: %zu bytes\n", sizeof(long));
+    printf("Size of long long int: %zu bytes\n", sizeof(long long)); // after C99
+    printf("Size of float: %zu bytes\n", sizeof(float));
+    printf("Size of double: %zu bytes\n", sizeof(double));
 
-    printf("size of char type is: %lu bytes\n", sizeof(char_type));
-    printf("size of int type is: %lu bytes\n", sizeof(int_type));
-    printf("size of short int type is: %lu bytes\n", sizeof(short_type));
-    printf("size of long int type is: %lu bytes\n", sizeof(long_type));
-    printf("size of long long int type is: %lu bytes\n", sizeof(long_long_type));
+    printf("========================================\n");
 
-    unsigned char unsigned_char_type = 'a';
-    unsigned int unsigned_int_type = 1;
-    unsigned short unsigned_short_type = 1;
-    unsigned long unsigned_long_type = 1;
-    unsigned long long  unsigned_long_long_int_type = 1;
-
-
-    printf("size of unsigned char type is: %lu bytes\n", sizeof(unsigned_char_type));
-    printf("size of unsigned int type is: %lu bytes\n", sizeof(unsigned_int_type));
-    printf("size of unsigned short int type is: %lu bytes\n", sizeof(unsigned_short_type));
-    printf("size of unsigned long int type is: %lu bytes\n", sizeof(unsigned_long_type));
-    printf("size of unsigned long long int type is: %lu bytes\n", sizeof(unsigned_long_long_int_type));
-
-    signed char signed_char_type = 'a';
-    signed int signed_int_type = 1;
-    signed short signed_short_type = 1;
-    signed long signed_long_type = 1;
-    signed long long signed_long_long_type = 1;
-
-    printf("size of signed char type is: %lu bytes\n", sizeof(signed_char_type));
-    printf("size of signed int type is: %lu bytes\n", sizeof(signed_int_type));
-    printf("size of signed short int type is: %lu bytes\n", sizeof(signed_short_type));
-    printf("size of signed long int type is: %lu bytes\n", sizeof(signed_long_type));
-    printf("size of signed long long int type is: %lu bytes\n", sizeof(signed_long_long_type));
-
-    float float_type = 1.0f;
-    double double_type = 1.0;
-    long double long_double_type = 1.0;
-
-    printf("size of float type is: %lu bytes\n", sizeof(float_type));
-    printf("size of double type is: %lu bytes\n", sizeof(double_type));
-    printf("size of long double type is: %lu bytes\n", sizeof(long_double_type));
-
-    // in C99
-    bool bool_type = 1;
-    printf("size of bool type is: %lu bytes\n", sizeof(bool_type));
+    int arr[] = {1, 2, 3};
+    int(*p)[3] = &arr;
+    printf("Size of void *: %zu bytes\n", sizeof(void *));
+    printf("Size of int*: %zu bytes\n", sizeof(int *));
+    printf("Size of char*: %zu bytes\n", sizeof(char *));
+    printf("Size of long long int*: %zu bytes\n", sizeof(long long int *));
+    printf("Size of void*: %zu bytes\n", sizeof(void *));
+    printf("Size of function pointer: %zu bytes\n", sizeof(void (*)()));
+    printf("Size of pointer to 3-int element array: %zu bytes\n", sizeof(p));
+    printf("Size of 3-int element array: %zu bytes\n", sizeof(*p));
 
     return 0;
 }
