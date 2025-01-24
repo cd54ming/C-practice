@@ -5,6 +5,9 @@ This repository contains my practice exercises for learning the C programming la
 
 ## Categories
 
+### Multithread with Volatile
+在多執行緒環境中使用 `Volatile` 關鍵字，以避免競爭條件並確保執行緒之間的正確同步。
+
 ### Sorting
 實作常見的六大排序演算法（Bubble Sort、Selection Sort、Insertion Sort、Quick Sort、Heap Sort 與 Merge Sort），並進行單元測試。
 - 函式指標應用：透過函式指標實現排序順序（Ascending 或 Descending）的靈活調整。
