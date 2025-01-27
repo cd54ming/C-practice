@@ -5,6 +5,9 @@ This repository contains my practice exercises for learning the C programming la
 
 ## Categories
 
+### Link List
+複習 Linked List 操作，並學習如何撰寫 Makefile，管理專案建置流程。
+
 ### Multithread with Volatile
 在多執行緒環境中使用 `Volatile` 關鍵字，以避免競爭條件並確保執行緒之間的正確同步。
 
