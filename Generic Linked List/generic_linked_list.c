@@ -4,26 +4,33 @@
 #include <string.h>
 
 static node_t *create_node(void *data, size_t size) {
+    if (!data) {
+        printf("data is NULL.\n");
+        return NULL;
+    }
+
     node_t *new_node = (node_t *)malloc(sizeof(node_t));
     if (!new_node) {
         fprintf(stderr, "Failed to allocate memory for new node.\n");
         exit(EXIT_FAILURE);
     }
+
     new_node->data = malloc(size);
-    if (!new_node->data) {
+    if (!(new_node->data)) {
         fprintf(stderr, "Failed to allocate memory for new node data.\n");
         free(new_node);
         exit(EXIT_FAILURE);
     }
     memcpy(new_node->data, data, size);
-    new_node->next = NULL;
 
+    new_node->next = NULL;
     return new_node;
 }
 
 static void destroy_node(node_t **node) {
-    if (!node || !*node)
+    if (!node || !(*node)) {
         return;
+    }
 
     free((*node)->data);
     free(*node);
@@ -31,13 +38,12 @@ static void destroy_node(node_t **node) {
 }
 
 node_t *append_node(node_t **head, void *data, size_t size) {
-    if (!head) {
-        fprintf(stderr, "Invalid head pointer.\n");
+    if (!head || !data) {
+        fprintf(stderr, "Error: Head pointer or data is NULL.\n");
         return NULL;
     }
 
     node_t *new_node = create_node(data, size);
-
     if (!(*head)) {
         *head = new_node;
         return new_node;
@@ -47,39 +53,46 @@ node_t *append_node(node_t **head, void *data, size_t size) {
     while (tail->next) {
         tail = tail->next;
     }
-
     tail->next = new_node;
+
     return new_node;
 }
 
 node_t *insert_node(node_t **head, void *data, size_t size, unsigned int position) {
-    node_t *new_node = create_node(data, size);
+    if (!head || !data) {
+        printf("Insert node head is NULL.\n");
+        return NULL;
+    }
 
+    node_t *new_node = create_node(data, size);
     if (position == 0) {
         new_node->next = *head;
         *head = new_node;
         return new_node;
     }
 
-    node_t *prev_node = *head;
+    node_t *prev = *head;
     for (unsigned int i = 0; i < (position - 1); i++) {
-        prev_node = prev_node->next;
-        if (!prev_node) {
-            printf("Position out of bounds\n");
+        prev = prev->next;
+        if (!prev) {
+            printf("Insert node out of bound.\n");
             destroy_node(&new_node);
             return NULL;
         }
     }
-
-    new_node->next = prev_node->next;
-    prev_node->next = new_node;
+    new_node->next = prev->next;
+    prev->next = new_node;
 
     return new_node;
 }
 
 node_t *find_node(node_t *head, void *data, size_t size) {
-    node_t *current = head;
+    if (!head) {
+        printf("Find node head is NULL.\n");
+        return NULL;
+    }
 
+    node_t *current = head;
     while (current) {
         if (memcmp(current->data, data, size) == 0) {
             return current;
@@ -90,21 +103,21 @@ node_t *find_node(node_t *head, void *data, size_t size) {
     return NULL;
 }
 
-void update_node(node_t *node, void *data, size_t size) {
+node_t *update_node(node_t *node, void *data, size_t size) {
     if (!node || !data) {
-        printf("Invalid input.\n");
-        return;
+        fprintf(stderr, "Error: Node or data is NULL.\n");
+        return NULL;
     }
 
-    void *new_data = malloc(size);
+    void *new_data = realloc(node->data, size);
     if (!new_data) {
         fprintf(stderr, "Failed to allocate memory for new data.\n");
-        return;
+        return node;
     }
-
     memcpy(new_data, data, size);
-    free(node->data);
     node->data = new_data;
+
+    return node;
 }
 
 void delete_node(node_t **head, void *data, size_t size) {
@@ -113,61 +126,58 @@ void delete_node(node_t **head, void *data, size_t size) {
         return;
     }
 
-    if (memcmp((*head)->data, data, size) == 0) {
-        node_t *temp = *head;
+    node_t *current = *head;
+    if (memcmp(current->data, data, size) == 0) {
         *head = (*head)->next;
-        destroy_node(&temp);
+        destroy_node(&current);
         return;
     }
 
-    node_t *target = *head;
-    node_t *prev = NULL;
-
-    while (target && memcmp(target->data, data, size)) {
-        prev = target;
-        target = target->next;
+    node_t *prev = current;
+    current = current->next;
+    while (current) {
+        if (memcmp(current->data, data, size) == 0) {
+            prev->next = current->next;
+            destroy_node(&current);
+            return;
+        }
+        prev = current;
+        current = current->next;
     }
 
-    if (!target) {
-        printf("not found target\n");
-        return;
-    }
-
-    prev->next = target->next;
-    destroy_node(&target);
+    return;
 }
 
 void print_list(node_t *head, void (*print_funcs[])(void *)) {
     if (!head) {
-        printf("List is empty.\n");
+        printf("Print list head does not exists.\n");
         return;
     }
 
     node_t *current = head;
     int index = 0;
-
     while (current) {
         if (!print_funcs[index]) {
             fprintf(stderr, "Error: Missing print function for node %d\n", index);
             return;
         }
-        print_funcs[index++](current->data);
+        print_funcs[index](current->data);
 
         if (current->next) {
             printf(" -> ");
         }
 
         current = current->next;
+        index++;
     }
     printf("\n");
 }
 
 void free_list(node_t **head) {
     while (*head) {
-        node_t *temp = *head;
+        node_t *current = *head;
         *head = (*head)->next;
-        destroy_node(&temp);
+        destroy_node(&current);
     }
-
     *head = NULL;
 }
