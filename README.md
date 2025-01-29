@@ -5,9 +5,15 @@ This repository contains my practice exercises for learning the C programming la
 
 ## Categories
 
+### Generic Quick Sort
+使用通用指標 `void *` 來模仿 `<stdlib.h>` 中的 `qsort()` 函式，使 `my_qsort()` 能夠對不同型別的陣列（包括 struct）進行排序。
+
+撰寫單元測試以確保正確性，並透過 Makefile 優化編譯與測試流程。
+
 ### Generic Linked List
 使用通用指標 `void *` 實作泛型 Linked List，結合函式指標陣列實現動態處理不同型別的操作。
-撰寫 Makefile 與單元測試，優化編譯與測試流程。
+
+撰寫單元測試以確保正確性，並透過 Makefile 優化編譯與測試流程。
 
 ### Linked List
 複習 Linked List 操作，並學習如何撰寫 Makefile，管理專案建置流程。
