@@ -1,23 +1,23 @@
 semaphore write_mutex = 1;
-semaphore mutex = 1;
+semaphore read_mutex = 1;
 int read_count = 0;
 
 Reader () {
-	wait(mutex);
+	wait(read_mutex);
 	read_count++;
 	if (read_count == 1) {
 		wait(write_mutex);
 	}
-	signal(mutex);
+	signal(read_mutex);
 	
 	ReadResource();
 	
-	wait(mutex);
+	wait(read_mutex);
 	read_count--;
 	if (read_count == 0) {
 		signal(write_mutex);
 	}
-	signal(mutex);
+	signal(read_mutex);
 }
 
 Writer () {
