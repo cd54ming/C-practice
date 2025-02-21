@@ -82,6 +82,8 @@ void *Consumer(void *arg) {
 
         while (buffer->available == BUFFER_SIZE) {
             if (consumer_count == NUM_ITEMS) {
+                // 當某個 Producer 產出最後一個資料後，可能仍有其他 Producer 因為緩衝區已滿而處於等待狀態
+                // 因此需要使用 broadcast 通知所有等待中的 Producer，以確保它們能夠正確退出
                 pthread_cond_broadcast(&buffer->not_full);
                 pthread_mutex_unlock(&buffer->lock);
                 return NULL;
